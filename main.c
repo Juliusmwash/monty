@@ -22,7 +22,6 @@ void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 		(*op)->f = &pall;
 		(*op)->f(sk, *l);
 	}
-	free(str_int);
 }
 
 /**
@@ -39,15 +38,9 @@ void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 	char *array[5] = {"push", "pall"};
 	int i, check;
 
-	str_int = malloc(sizeof(element_t));
-	if (str_int == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	(*op)->opcode = strtok(li, " \n");
+	(*op)->opcode = strtok(li, " \n\t\a\b");
 	if ((*op)->opcode != NULL)
-		str_int->element = strtok(NULL, " \n");
+		str_int->element = strtok(NULL, " \n\t\a\b");
 	check = 0;
 	for (i = 0; i < 2; i++)
 	{
@@ -107,6 +100,12 @@ int main(int argc, char *argv[])
 	char line[MAX_LINE_LENGTH], *result;
 	unsigned int l = 0;
 
+	str_int = malloc(sizeof(element_t));
+	if (str_int == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	if (argc < 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -130,5 +129,6 @@ int main(int argc, char *argv[])
 		main_hlper(&oppexec, line, &stack_data, &l);
 	}
 	free_stack(&stack_data);
+	free(str_int);
 	return (0);
 }
