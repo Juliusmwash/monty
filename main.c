@@ -60,8 +60,10 @@ void main_helper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", *l, (*op)->opcode);
 		free_stack(sk);
+		free(*op);
 		exit(EXIT_FAILURE);
 	}
+	free(*op);
 }
 
 /**
@@ -82,6 +84,7 @@ void free_stack(stack_tt **stack)
 		tmp = *stack;
 	}
 }
+
 /**
  * main - driver program
  * @argc: count of arguments in the argv array
@@ -111,6 +114,12 @@ int main(int argc, char *argv[])
 	while (result = fgets(line, MAX_LINE_LENGTH, textfile), result != NULL)
 	{
 		l++;
+		oppexec = malloc(sizeof(instruction_t));
+		if (oppexec == NULL)
+		{
+                fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+		}
 		main_helper(&oppexec, line, &stack_data, &l);
 	}
 	free_stack(&stack_data);
