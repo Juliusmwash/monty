@@ -10,11 +10,11 @@ void push_helper(unsigned int line_num, stack_tt **stack)
 {
 	int i = 0;
 
-	while (element[i] != '\0')
+	while (str_int->element[i] != '\0')
 	{
-		if (element[i] < '0' || element[i] > '9')
+		if (str_int->element[i] < '0' || str_int->element[i] > '9')
 		{
-			if (element[i] != '-')
+			if (str_int->element[i] != '-')
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line_num);
 				free_stack(stack);
@@ -38,14 +38,14 @@ void push(stack_tt **stack, unsigned int line_num)
 	stack_tt *tmp;
 	int num;
 
-	if (element == NULL)
+	if (str_int->element == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_num);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	push_helper(line_num, stack);
-	num = atoi(element);
+	num = atoi(str_int->element);
 	tmp = malloc(sizeof(stack_tt));
 	if (tmp == NULL)
 	{

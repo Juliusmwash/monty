@@ -19,12 +19,12 @@
 
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_tt;
 
- /**
+/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -32,15 +32,30 @@ typedef struct stack_s
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
  */
+
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_tt **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_tt **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct element_s - global variable
+ * @element: string
+ *
+ * Description: string to be converted to integer
+ */
+
+typedef struct element_s
+{
+	char *element;
+} element_t;
+
+extern element_t *str_int;
 void push(stack_tt **, unsigned int);
 void pall(stack_tt **, unsigned int);
 void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
-void main_helper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l);
+void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l);
 void push_helper(unsigned int line_num, stack_tt **stack);
 extern char *element;
 void free_stack(stack_tt **stack);
