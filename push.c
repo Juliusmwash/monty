@@ -41,6 +41,7 @@ void push(stack_tt **stack, unsigned int line_num)
 	if (element == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_num);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	push_helper(line_num, stack);
@@ -49,6 +50,7 @@ void push(stack_tt **stack, unsigned int line_num)
 	if (tmp == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	tmp->n = num;

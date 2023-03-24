@@ -59,6 +59,7 @@ void main_helper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 	if ((*op)->opcode != NULL && check == 0)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", *l, (*op)->opcode);
+		free_stack(sk);
 		exit(EXIT_FAILURE);
 	}
 }
