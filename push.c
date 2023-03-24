@@ -8,15 +8,18 @@
 
 void push_helper(unsigned int line_num, stack_tt **stack)
 {
-	int i = 0;
+	int i = 0, check = 0;
 
 	while (element[i] != '\0')
 	{
 		if (element[i] < '0' || element[i] > '9')
 		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_num);
-			free_stack(stack);
-			exit(EXIT_FAILURE);
+			if (element[i] != '-')
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_num);
+				free_stack(stack);
+				exit(EXIT_FAILURE);
+			}
 		}
 
 		i++;
