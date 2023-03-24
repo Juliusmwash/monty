@@ -8,7 +8,7 @@
 
 void push_helper(unsigned int line_num, stack_tt **stack)
 {
-	int i = 0, check = 0;
+	int i = 0;
 
 	while (element[i] != '\0')
 	{
