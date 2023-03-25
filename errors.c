@@ -33,3 +33,15 @@ void no_file_error(void)
 	fprintf(stderr, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * none_integer_error - prints an error message and exits with an error code
+ * @line_num: line number of the file
+ * Return: nothing
+ */
+
+void none_integer_error(unsigned int line_num)
+{
+	fprintf(stderr, "L%u: usage: push integer\n", line_num);
+	exit(EXIT_FAILURE);
+}

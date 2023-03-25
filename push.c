@@ -17,9 +17,8 @@ void push_helper(unsigned int line_num, stack_tt **stack)
 		{
 			if (str_int->element[i] != '-')
 			{
-				fprintf(stderr, "L%u: usage: push integer\n", line_num);
 				free_stack(stack);
-				exit(EXIT_FAILURE);
+				none_integer_error(line_num);
 			}
 		}
 
@@ -41,18 +40,16 @@ void push(stack_tt **stack, unsigned int line_num)
 
 	if (str_int->element == NULL)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_num);
 		free_stack(stack);
-		exit(EXIT_FAILURE);
+		none_integer_error(line_num);
 	}
 	push_helper(line_num, stack);
 	num = atoi(str_int->element);
 	tmp = malloc(sizeof(stack_tt));
 	if (tmp == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(stack);
-		exit(EXIT_FAILURE);
+		malloc_error();
 	}
 	tmp->n = num;
 	tmp->prev = NULL;

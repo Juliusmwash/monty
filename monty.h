@@ -70,5 +70,6 @@ void free_stack(stack_tt **stack);
 void malloc_error(void);
 void file_open_error(char *);
 void no_file_error(void);
+void none_integer_error(unsigned int);
 
 #endif /* MONTY_H */
