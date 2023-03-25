@@ -25,7 +25,7 @@ void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 }
 
 /**
- * main_helper - function helping main function do its assigned task
+ * main_hlper - function helping main function do its assigned task
  * @op: linked list containing opcode and function pointer
  * @sk: doubly linked list representation of stack
  * @l: line number
@@ -123,8 +123,8 @@ int main(int argc, char *argv[])
 		oppexec = malloc(sizeof(instruction_t));
 		if (oppexec == NULL)
 		{
-                fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
 		}
 		main_hlper(&oppexec, line, &stack_data, &l);
 	}
