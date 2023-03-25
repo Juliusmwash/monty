@@ -1,0 +1,6 @@
+valgrind --vgdb=yes --vgdb-error=0 ./prog
+# start gdb program on another shell
+gdb ./prog
+# Then give the following command to GDB
+(gdb) target remote | vgdb
+# you can now debug your program e.g. by inserting a breadpoint and then using the GDB continue command;

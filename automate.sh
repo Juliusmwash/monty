@@ -1,5 +1,5 @@
 #!/bin/bash
-gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
+gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -g -o monty
 #alias ab="bash automate.sh"
 #alias ex="./monty txt.txt"
 #gcc -fpic -c push.c main.c pall.c
