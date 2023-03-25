@@ -2,6 +2,7 @@
 
 /**
  * push_helper - helps push achieve its purpose
+ * @stack: doubly linked list stack representation
  * @line_num: file line number
  * Return: 1 or 0
  */
