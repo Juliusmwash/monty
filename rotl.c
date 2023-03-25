@@ -20,7 +20,10 @@ void rotl(stack_tt **stack, unsigned int line_num)
 	}
 	tmp = *stack;
 	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		free(temp);
 		return;
+	}
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	temp->n = (*stack)->n;
