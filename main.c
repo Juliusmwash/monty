@@ -102,30 +102,18 @@ int main(int argc, char *argv[])
 
 	str_int = malloc(sizeof(element_t));
 	if (str_int == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+		malloc_error();
 	if (argc < 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		no_file_error();
 	textfile = fopen(argv[1], "r");
 	if (textfile == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		file_open_error(argv[1]);
 	while (result = fgets(line, MAX_LINE_LENGTH, textfile), result != NULL)
 	{
 		l++;
 		oppexec = malloc(sizeof(instruction_t));
 		if (oppexec == NULL)
-		{
-			fprintf(stderr, "Error: malloc failed\n");
-			exit(EXIT_FAILURE);
-		}
+			malloc_error();
 		main_hlper(&oppexec, line, &stack_data, &l);
 	}
 	fclose(textfile);

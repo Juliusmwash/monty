@@ -51,13 +51,24 @@ typedef struct element_s
 	char *element;
 } element_t;
 
+/* GLOBAL VARIABLE */
 extern element_t *str_int;
+
+/* MAIN FUNCTIONS */
 void push(stack_tt **, unsigned int);
 void pall(stack_tt **, unsigned int);
+
+/* HELPER FUNCTIONS */
 void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
 void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l);
 void push_helper(unsigned int line_num, stack_tt **stack);
-extern char *element;
+
+/* FREE MEMORY FUNCTIONS */
 void free_stack(stack_tt **stack);
+
+/* ERRORS */
+void malloc_error(void);
+void file_open_error(char *);
+void no_file_error(void);
 
 #endif /* MONTY_H */
