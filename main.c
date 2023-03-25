@@ -30,6 +30,11 @@ int main_hlp_hlp_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 		(*op)->f = &pchar;
 		(*op)->f(sk, *l);
 	}
+	else if (strcmp((*op)->opcode, "pstr") == 0)
+	{
+		(*op)->f = &pstr;
+		(*op)->f(sk, *l);
+	}
 	else
 		if (strcmp((*op)->opcode, "nop") != 0)
 			check = 1;
