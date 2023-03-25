@@ -99,11 +99,12 @@ int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
  * @op: linked list containing opcode and function pointer
  * @sk: doubly linked list representation of stack
  * @l: line number
+ * @t: file pointer
  * @li: array receiving every character in the line
  * Return: Nothing
  */
 
-void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
+void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l, FILE *t)
 {
 	int check;
 
@@ -135,6 +136,7 @@ void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 	{
 		free_stack(sk);
 		free(str_int);
+		fclose(t);
 		unknown_instruction_error(op, *l);
 	}
 	free(*op);
@@ -181,7 +183,7 @@ int main(int argc, char *argv[])
 				fclose(textfile);
 				malloc_error();
 			}
-			main_hlper(&oppexec, line, &stack_data, &l);
+			main_hlper(&oppexec, line, &stack_data, &l, textfile);
 		}
 	}
 	fclose(textfile);

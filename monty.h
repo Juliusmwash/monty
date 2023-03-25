@@ -72,7 +72,7 @@ void rotl(stack_tt **, unsigned int);
 
 /* HELPER FUNCTIONS */
 int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
-void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l);
+void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l, FILE *);
 void push_helper(unsigned int line_num, stack_tt **stack);
 int main_hlp_hlp_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
 
