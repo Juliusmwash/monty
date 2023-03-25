@@ -1,7 +1,9 @@
+nop
 push 45
 push 67
 push 90
 push 87
+nop
 push 56
 push 44
 add
