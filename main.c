@@ -134,6 +134,8 @@ void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 	if ((*op)->opcode != NULL && check)
 	{
 		free_stack(sk);
+		free(*op);
+		free(str_int);
 		unknown_instruction_error(op, *l);
 	}
 	free(*op);
@@ -171,7 +173,12 @@ int main(int argc, char *argv[])
 		{
 			oppexec = malloc(sizeof(instruction_t));
 			if (oppexec == NULL)
+			{
+				free_stack(&stack_data);
+				free(str_int);
+				fclose(textfile);
 				malloc_error();
+			}
 			main_hlper(&oppexec, line, &stack_data, &l);
 		}
 	}
