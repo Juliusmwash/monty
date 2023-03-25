@@ -11,7 +11,7 @@ void pchar(stack_tt **stack, unsigned int line_num)
 {
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%u: can't pchar\n", line_num);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n >= 0 && (*stack)->n < 128)
