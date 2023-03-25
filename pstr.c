@@ -13,7 +13,10 @@ void pstr(stack_tt **stack, unsigned int line_num)
 
 	tmp = *stack;
 	if (*stack == NULL)
+	{
 		putchar(10);
+		return;
+	}
 	while (tmp != NULL)
 	{
 		if (tmp->n >= 0 && tmp->n < 128)
