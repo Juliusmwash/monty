@@ -20,6 +20,11 @@ int main_hlp_hlp_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 		(*op)->f = &mul;
 		(*op)->f(sk, *l);
 	}
+	else if (strcmp((*op)->opcode, "mod") == 0)
+	{
+		(*op)->f = &stack_mod;
+		(*op)->f(sk, *l);
+	}
 	else
 		if (strcmp((*op)->opcode, "nop") != 0)
 			check = 1;
@@ -117,25 +122,6 @@ void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 		unknown_instruction_error(op, *l);
 	}
 	free(*op);
-}
-
-/**
- * free_stack - frees the allocated memory
- * @stack: doubly linked list
- * Return: Nothing
- */
-
-void free_stack(stack_tt **stack)
-{
-	stack_tt *tmp;
-
-	tmp = *stack;
-	while (tmp != NULL)
-	{
-		*stack = (*stack)->next;
-		free(tmp);
-		tmp = *stack;
-	}
 }
 
 /**

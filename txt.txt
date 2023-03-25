@@ -1,11 +1,10 @@
-mul
+
 push 1
 push 8
 push 4
 push 50
-push 2
-nop
-mul
+push 9
+mod
 pall
 
 

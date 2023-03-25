@@ -51,8 +51,7 @@ void unknown_instruction_error(instruction_t **op, unsigned int l)
 }
 
 /**
- * sub - subtracts two elements
- * @stack: doubly linked list representation of stack
+ * sub_error - subtracts two elements
  * @line_num: file's line number
  * Return: nothing
  */
@@ -60,17 +59,5 @@ void unknown_instruction_error(instruction_t **op, unsigned int l)
 void sub_error(unsigned int line_num)
 {
 	fprintf(stderr, "L%u: can't sub, stack too short\n", line_num);
-	exit(EXIT_FAILURE);
-}
-
-/**
- * mul_error - subtracts two elements
- * @line_num: file's line number
- * Return: nothing
- */
-
-void mul_error(unsigned int line_num)
-{
-	fprintf(stderr, "L%u: can't mul, stack too short\n", line_num);
 	exit(EXIT_FAILURE);
 }

@@ -64,6 +64,7 @@ void add(stack_tt **, unsigned int);
 void sub(stack_tt **, unsigned int);
 void stack_div(stack_tt **, unsigned int);
 void mul(stack_tt **, unsigned int);
+void stack_mod(stack_tt **, unsigned int);
 
 /* HELPER FUNCTIONS */
 int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
