@@ -9,16 +9,24 @@
 
 void rotl(stack_tt **stack, unsigned int line_num)
 {
-	stack_tt *tmp;
-	int n;
+	stack_tt *tmp, *temp;
 
+	temp = malloc(sizeof(stack_tt));
+	if (temp == NULL)
+	{
+		free_stack(stack);
+		free(str_int);
+		malloc_error();
+	}
 	tmp = *stack;
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
-	n = (*stack)->n;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
-	(*stack)->n = tmp->n;
-	tmp->n = n;
+	temp->n = (*stack)->n;
+	temp->next = NULL;
+	temp->prev = tmp;
+	tmp->next = temp;
+	pop(stack, line_num);
 	(void) line_num;
 }
