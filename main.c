@@ -138,6 +138,7 @@ int main(int argc, char *argv[])
 	FILE *textfile;
 	char line[MAX_LINE_LENGTH], *result;
 	unsigned int l = 0;
+	int check;
 
 	str_int = malloc(sizeof(element_t));
 	if (str_int == NULL)
@@ -150,7 +151,8 @@ int main(int argc, char *argv[])
 	while (result = fgets(line, MAX_LINE_LENGTH, textfile), result != NULL)
 	{
 		l++;
-		if (line[0] != '#')
+		check = cmnt(line);
+		if (!check)
 		{
 			oppexec = malloc(sizeof(instruction_t));
 			if (oppexec == NULL)
