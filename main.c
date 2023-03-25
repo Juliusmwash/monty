@@ -87,7 +87,9 @@ void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 	{
 		free_stack(sk);
 		free(*op);
-		unknown_instruction_error(op, *l);
+		fprintf(stderr, "L%u: unknown instruction %s\n", *l, (*op)->opcode);
+		exit(EXIT_FAILURE);
+		/* unknown_instruction_error(op, *l); */
 	}
 	free(*op);
 }
