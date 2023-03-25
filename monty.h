@@ -61,9 +61,10 @@ void pint(stack_tt **, unsigned int);
 void pop(stack_tt **, unsigned int);
 void swap(stack_tt **, unsigned int);
 void add(stack_tt **, unsigned int);
+void sub(stack_tt **, unsigned int);
 
 /* HELPER FUNCTIONS */
-void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
+int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
 void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l);
 void push_helper(unsigned int line_num, stack_tt **stack);
 
@@ -79,5 +80,7 @@ void pint_error(unsigned int);
 void pop_error(unsigned int);
 void swap_error(unsigned int);
 void add_error(unsigned int);
+void unknown_instruction_error(instruction_t **, unsigned int);
+void sub_error(unsigned int);
 
 #endif /* MONTY_H */

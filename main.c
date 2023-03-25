@@ -10,16 +10,14 @@ element_t *str_int;
  * Return: Nothing
  */
 
-void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
+int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 {
-	if (strcmp((*op)->opcode, "push") == 0)
+	int check;
+
+	check = 0;
+	if (strcmp((*op)->opcode, "sub") == 0)
 	{
-		(*op)->f = &push;
-		(*op)->f(sk, *l);
-	}
-	else if (strcmp((*op)->opcode, "pall") == 0)
-	{
-		(*op)->f = &pall;
+		(*op)->f = &sub;
 		(*op)->f(sk, *l);
 	}
 	else if (strcmp((*op)->opcode, "pint") == 0)
@@ -42,6 +40,10 @@ void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 		(*op)->f = &add;
 		(*op)->f(sk, *l);
 	}
+	else
+		if (strcmp((*op)->opcode, "nop") != 0)
+			check = 1;
+	return (check);
 }
 
 /**
@@ -55,34 +57,37 @@ void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 
 void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 {
-	char *array[10] = {"push", "pall", "pint", "pop", "swap",
-		"add", "nop"};
-	int i, check;
+	int check;
 
 	(*op)->opcode = strtok(li, " \n\t\a\b");
 	if ((*op)->opcode != NULL)
 		str_int->element = strtok(NULL, " \n\t\a\b");
+	/* Handle some operation. Others handled on another function */
 	check = 0;
-	for (i = 0; i < 7; i++)
+	if (*op != NULL)
 	{
-		if ((*op)->opcode != NULL)
+		if (strcmp((*op)->opcode, "push") == 0)
 		{
-			if (strcmp((*op)->opcode, array[i]) == 0)
-			{
+			(*op)->f = &push;
+			(*op)->f(sk, *l);
 			check = 1;
-			main_helper_helper(op, sk, l);
-			break;
-			}
-			else
-			check = 0;
+		}
+		if (strcmp((*op)->opcode, "pall") == 0)
+		{
+			(*op)->f = &pall;
+			(*op)->f(sk, *l);
+			check = 1;
 		}
 	}
-	if ((*op)->opcode != NULL && check == 0)
+	if (check == 0 && *op != NULL)
+		check = main_helper_helper(op, sk, l);
+	else
+		check = 0;
+	if ((*op)->opcode != NULL && check)
 	{
-		fprintf(stderr, "L%u: unknown instruction %s\n", *l, (*op)->opcode);
 		free_stack(sk);
 		free(*op);
-		exit(EXIT_FAILURE);
+		unknown_instruction_error(op, *l);
 	}
 	free(*op);
 }

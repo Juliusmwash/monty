@@ -35,3 +35,29 @@ void add_error(unsigned int line_num)
 	fprintf(stderr, "L%u: can't add, stack too short\n", line_num);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * unknown_instruction_error - prints the error message and exits
+ * @op: linked list containing opcode and function pointer
+ * @l: file's line number
+ * Return: nothing
+ */
+
+void unknown_instruction_error(instruction_t **op, unsigned int l)
+{
+	fprintf(stderr, "L%u: unknown instruction %s\n", l, (*op)->opcode);
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * sub - subtracts two elements
+ * @stack: doubly linked list representation of stack
+ * @line_num: file's line number
+ * Return: nothing
+ */
+
+void sub_error(unsigned int line_num)
+{
+	fprintf(stderr, "L%u: can't sub, stack too short\n", line_num);
+	exit(EXIT_FAILURE);
+}
