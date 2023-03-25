@@ -40,6 +40,11 @@ int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 		(*op)->f = &add;
 		(*op)->f(sk, *l);
 	}
+	else if (strcmp((*op)->opcode, "div") == 0)
+	{
+		(*op)->f = &stack_div;
+		(*op)->f(sk, *l);
+	}
 	else
 		if (strcmp((*op)->opcode, "nop") != 0)
 			check = 1;
@@ -64,7 +69,7 @@ void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 		str_int->element = strtok(NULL, " \n\t\a\b");
 	/* Handle some operation. Others handled on another function */
 	check = 0;
-	if (*op != NULL)
+	if ((*op)->opcode != NULL)
 	{
 		if (strcmp((*op)->opcode, "push") == 0)
 		{
@@ -79,7 +84,7 @@ void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 			check = 1;
 		}
 	}
-	if (check == 0 && *op != NULL)
+	if (check == 0 && (*op)->opcode != NULL)
 		check = main_helper_helper(op, sk, l);
 	else
 		check = 0;

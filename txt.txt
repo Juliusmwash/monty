@@ -1,3 +1,7 @@
 push 1
-push 2
-pushi
+push 8
+push 4
+div
+pall
+
+
