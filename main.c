@@ -3,6 +3,30 @@
 element_t *str_int;
 
 /**
+ * main_hlp_hlp_helper - function helping main_helper accomplish its task
+ * @op: linked list containing opcode and function pointer
+ * @sk: doubly linked list representing stack
+ * @l: line number
+ * Return: Nothing
+ */
+
+int main_hlp_hlp_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
+{
+	int check;
+
+	check = 0;
+	if (strcmp((*op)->opcode, "mul") == 0)
+	{
+		(*op)->f = &mul;
+		(*op)->f(sk, *l);
+	}
+	else
+		if (strcmp((*op)->opcode, "nop") != 0)
+			check = 1;
+	return (check);
+}
+
+/**
  * main_helper_helper - function helping main_helper accomplish its task
  * @op: linked list containing opcode and function pointer
  * @sk: doubly linked list representing stack
@@ -46,8 +70,7 @@ int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 		(*op)->f(sk, *l);
 	}
 	else
-		if (strcmp((*op)->opcode, "nop") != 0)
-			check = 1;
+		check = main_hlp_hlp_helper(op, sk, l);
 	return (check);
 }
 

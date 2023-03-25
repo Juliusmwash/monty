@@ -1,7 +1,10 @@
 push 1
 push 8
 push 4
-div
+push 50
+push 2
+nop
+mul
 pall
 
 

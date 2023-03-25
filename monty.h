@@ -63,11 +63,13 @@ void swap(stack_tt **, unsigned int);
 void add(stack_tt **, unsigned int);
 void sub(stack_tt **, unsigned int);
 void stack_div(stack_tt **, unsigned int);
+void mul(stack_tt **, unsigned int);
 
 /* HELPER FUNCTIONS */
 int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
 void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l);
 void push_helper(unsigned int line_num, stack_tt **stack);
+int main_hlp_hlp_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
 
 /* FREE MEMORY FUNCTIONS */
 void free_stack(stack_tt **stack);
@@ -83,5 +85,6 @@ void swap_error(unsigned int);
 void add_error(unsigned int);
 void unknown_instruction_error(instruction_t **, unsigned int);
 void sub_error(unsigned int);
+void mul_error(unsigned int line_num);
 
 #endif /* MONTY_H */
