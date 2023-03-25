@@ -150,10 +150,13 @@ int main(int argc, char *argv[])
 	while (result = fgets(line, MAX_LINE_LENGTH, textfile), result != NULL)
 	{
 		l++;
-		oppexec = malloc(sizeof(instruction_t));
-		if (oppexec == NULL)
-			malloc_error();
-		main_hlper(&oppexec, line, &stack_data, &l);
+		if (line[0] != '#')
+		{
+			oppexec = malloc(sizeof(instruction_t));
+			if (oppexec == NULL)
+				malloc_error();
+			main_hlper(&oppexec, line, &stack_data, &l);
+		}
 	}
 	fclose(textfile);
 	free_stack(&stack_data);
