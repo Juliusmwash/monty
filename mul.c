@@ -15,7 +15,7 @@ void mul(stack_tt **stack, unsigned int line_num)
 	{
 		if (*stack != NULL)
 			free_stack(stack);
-		add_error(line_num);
+		mul_error(line_num);
 	}
 	else
 	{
