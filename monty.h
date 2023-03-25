@@ -59,6 +59,7 @@ void push(stack_tt **, unsigned int);
 void pall(stack_tt **, unsigned int);
 void pint(stack_tt **, unsigned int);
 void pop(stack_tt **, unsigned int);
+void swap(stack_tt **, unsigned int);
 
 /* HELPER FUNCTIONS */
 void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
@@ -75,5 +76,6 @@ void no_file_error(void);
 void none_integer_error(unsigned int);
 void pint_error(unsigned int);
 void pop_error(unsigned int);
+void swap_error(unsigned int);
 
 #endif /* MONTY_H */

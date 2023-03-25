@@ -32,6 +32,11 @@ void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 		(*op)->f = &pop;
 		(*op)->f(sk, *l);
 	}
+	else if (strcmp((*op)->opcode, "swap") == 0)
+	{
+		(*op)->f = &swap;
+		(*op)->f(sk, *l);
+	}
 }
 
 /**
@@ -45,14 +50,14 @@ void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 
 void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l)
 {
-	char *array[5] = {"push", "pall", "pint", "pop"};
+	char *array[5] = {"push", "pall", "pint", "pop", "swap"};
 	int i, check;
 
 	(*op)->opcode = strtok(li, " \n\t\a\b");
 	if ((*op)->opcode != NULL)
 		str_int->element = strtok(NULL, " \n\t\a\b");
 	check = 0;
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < 5; i++)
 	{
 		if ((*op)->opcode != NULL)
 		{
