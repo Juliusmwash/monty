@@ -57,6 +57,7 @@ extern element_t *str_int;
 /* MAIN FUNCTIONS */
 void push(stack_tt **, unsigned int);
 void pall(stack_tt **, unsigned int);
+void pint(stack_tt **, unsigned int);
 
 /* HELPER FUNCTIONS */
 void main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
