@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * malloc_error - prints malloc error message on stderr and exits with an error code
+ * malloc_error - prints an error message and exits with an error code
  * Return: nothing
  */
 
@@ -24,7 +24,7 @@ void file_open_error(char *str)
 }
 
 /**
- * no_file_error - prints the appropriate message and exits with an error exit code
+ * no_file_error - prints an error message and exits with an error code
  * Return: nothing
  */
 
