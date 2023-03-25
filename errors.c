@@ -45,3 +45,15 @@ void none_integer_error(unsigned int line_num)
 	fprintf(stderr, "L%u: usage: push integer\n", line_num);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * pint_error - prints an error message and exits with an error code
+ * @line_num: file's line number
+ * Return: nothing;
+ */
+
+void pint_error(unsigned int line_num)
+{
+	fprintf(stderr, "L%u: can't pint, stack empty\n", line_num);
+	exit(EXIT_FAILURE);
+}
