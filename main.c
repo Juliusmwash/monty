@@ -128,7 +128,8 @@ int main(int argc, char *argv[])
 		}
 		main_hlper(&oppexec, line, &stack_data, &l);
 	}
+	fclose(textfile);
 	free_stack(&stack_data);
 	free(str_int);
-	return (0);
+	exit(0);
 }
