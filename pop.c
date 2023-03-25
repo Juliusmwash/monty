@@ -26,5 +26,6 @@ void pop(stack_tt **stack, unsigned int line_num)
 			*stack = NULL;
 		}
 	}
-	(void) line_num;
+	else
+		pop_error(line_num);
 }
