@@ -3,6 +3,7 @@
 /**
  * pint - prints the value at the top of the stack
  * @stack: doubly linked list stack representation
+ * @line_num: file's line number
  * Return: nothing
  */
 

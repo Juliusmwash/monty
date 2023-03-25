@@ -1,6 +1,6 @@
 #include "monty.h"
 
- /**
+/**
  * stack_mod- prints division error and exits with an error code
  * @line_num: file's line number
  * @stack: doubly linked list representation of the stack

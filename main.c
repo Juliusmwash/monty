@@ -95,7 +95,7 @@ int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 }
 
 /**
- * main_hlper - function helping main function do its assigned task
+ * _h - function helping main function do its assigned task
  * @op: linked list containing opcode and function pointer
  * @sk: doubly linked list representation of stack
  * @l: line number
@@ -104,7 +104,8 @@ int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
  * Return: Nothing
  */
 
-void main_hlper(instruction_t **op, char li[], stack_tt **sk, unsigned int *l, FILE *t)
+/* Forced to change 'main-helper' to '_h' due to line length */
+void _h(instruction_t **op, char li[], stack_tt **sk, unsigned int *l, FILE *t)
 {
 	int check;
 
@@ -183,7 +184,7 @@ int main(int argc, char *argv[])
 				fclose(textfile);
 				malloc_error();
 			}
-			main_hlper(&oppexec, line, &stack_data, &l, textfile);
+			_h(&oppexec, line, &stack_data, &l, textfile);
 		}
 	}
 	fclose(textfile);
