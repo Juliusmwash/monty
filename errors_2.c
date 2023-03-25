@@ -46,6 +46,7 @@ void add_error(unsigned int line_num)
 void unknown_instruction_error(instruction_t **op, unsigned int l)
 {
 	fprintf(stderr, "L%d: unknown instruction %s\n", l, (*op)->opcode);
+	free(*op);
 	exit(EXIT_FAILURE);
 }
 
