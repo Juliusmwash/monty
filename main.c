@@ -20,6 +20,11 @@ int main_hp_hp_hp_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 		(*op)->f = &rotr;
 		(*op)->f(sk, *l);
 	}
+	else if (strcmp((*op)->opcode, "sub") == 0)
+	{
+		(*op)->f = &sub;
+		(*op)->f(sk, *l);
+	}
 	else
 		if (strcmp((*op)->opcode, "nop") != 0)
 			check = 1;
@@ -82,9 +87,9 @@ int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 	int check;
 
 	check = 0;
-	if (strcmp((*op)->opcode, "sub") == 0)
+	if (strcmp((*op)->opcode, "pall") == 0)
 	{
-		(*op)->f = &sub;
+		(*op)->f = &pall;
 		(*op)->f(sk, *l);
 	}
 	else if (strcmp((*op)->opcode, "pint") == 0)
@@ -131,24 +136,32 @@ int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l)
 void _h(instruction_t **op, char li[], stack_tt **sk, unsigned int *l, FILE *t)
 {
 	int check;
+	static int status;
 
 	(*op)->opcode = strtok(li, " \n\t\a\b");
 	if ((*op)->opcode != NULL)
 		str_int->element = strtok(NULL, " \n\t\a\b");
-	/* Handle some operation. Others handled on another function */
+	check = status_check(op, &status);
+	if (check)
+	{
+		free(*op);
+		return;
+	}
 	check = 0;
 	if ((*op)->opcode != NULL)
 	{
 		if (strcmp((*op)->opcode, "push") == 0)
 		{
-			(*op)->f = &push;
-			(*op)->f(sk, *l);
-			check = 1;
-		}
-		if (strcmp((*op)->opcode, "pall") == 0)
-		{
-			(*op)->f = &pall;
-			(*op)->f(sk, *l);
+			if (status)
+			{
+				(*op)->f = &push_queue;
+				(*op)->f(sk, *l);
+			}
+			else
+			{
+				(*op)->f = &push;
+				(*op)->f(sk, *l);
+			}
 			check = 1;
 		}
 	}
@@ -157,12 +170,7 @@ void _h(instruction_t **op, char li[], stack_tt **sk, unsigned int *l, FILE *t)
 	else
 		check = 0;
 	if ((*op)->opcode != NULL && check)
-	{
-		free_stack(sk);
-		free(str_int);
-		fclose(t);
-		unknown_instruction_error(op, *l);
-	}
+		f(op, sk, t, l);
 	free(*op);
 }
 
