@@ -69,12 +69,14 @@ int cmnt(char *);
 void pchar(stack_tt **, unsigned int);
 void pstr(stack_tt **, unsigned int);
 void rotl(stack_tt **, unsigned int);
+void rotr(stack_tt **, unsigned int);
 
 /* HELPER FUNCTIONS */
 int main_helper_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
 void _h(instruction_t **op, char li[], stack_tt **sk, unsigned int *l, FILE *);
 void push_helper(unsigned int line_num, stack_tt **stack);
 int main_hlp_hlp_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
+int main_hp_hp_hp_helper(instruction_t **op, stack_tt **sk, unsigned int *l);
 
 /* FREE MEMORY FUNCTIONS */
 void free_stack(stack_tt **stack);
